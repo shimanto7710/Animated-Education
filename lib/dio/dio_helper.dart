@@ -53,20 +53,4 @@ mixin DioHelper {
     ));
     return _manager!;
   }
-
-  // // set proxy
-  // static DefaultHttpClientAdapter _getHttpClientAdapter() {
-  //   DefaultHttpClientAdapter httpClientAdapter;
-  //   httpClientAdapter = DefaultHttpClientAdapter();
-  //   httpClientAdapter.onHttpClientCreate = (HttpClient client) {
-  //     client.findProxy = (uri) {
-  //       return 'PROXY 192.168.0.102:8081';
-  //     };
-  //     client.badCertificateCallback =
-  //         (X509Certificate cert, String host, int port) {
-  //       return true;
-  //     };
-  //   };
-  //   return httpClientAdapter;
-  // }
 }
