@@ -1,62 +1,45 @@
-import 'package:review_bhai_2022/api/model/UserModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefManager {
-
-
-  String name = "name";
-  String number = "number";
-
+  static String KEY_PHONE = "phone";
 
   Future setPhone(String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('phone', value);
+    prefs.setString(KEY_PHONE, value);
   }
 
   Future<String> getPhone() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('phone') ?? "";
+    return prefs.getString(KEY_PHONE) ?? "";
   }
 
-  setIsLoggedIn(bool value) async {
+  Future setString(String key, String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('loginData', value);
+    prefs.setString(key, value);
   }
 
-  setIsCompletedInfo(bool value) async {
+  Future<String> getString(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('completedInfo', value);
+    return prefs.getString(key) ?? "";
   }
 
-  Future<bool> getIsLoggedIn() async {
+  Future setInt(String key, int value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('loginData') ?? false;
+    prefs.setInt(key, value);
   }
 
-  Future<bool> getIsCompletedInfo() async {
+  Future<int> getInt(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('completedInfo') ?? false;
+    return prefs.getInt(key) ?? 0;
   }
 
-
-  Future setToken(String value) async {
+  Future setBool(String key, bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', value);
+    prefs.setBool(key, value);
   }
 
-  Future<String> getToken() async {
+  Future<bool> getBool(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('token') ?? "";
+    return prefs.getBool(key) ?? false;
   }
-
-  setUserId(String value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('userId', value);
-  }
-
-  Future<String> getUserId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('userId') ?? "";
-  }
-
 }
