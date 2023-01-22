@@ -1,10 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-
 import 'flutter_echarts.dart';
 
 class EChartWidget extends StatelessWidget {
