@@ -1,17 +1,21 @@
+library flutter_echarts;
+
 import 'dart:convert';
-import 'package:animated_education/three/threeJs.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
+
+import '../echarts/echarts_script.dart';
+
 /// <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, target-densitydpi=device-dpi" /><style type="text/css">body,html,#chart{height: 100%;width: 100%;margin: 0px;}div {-webkit-tap-highlight-color:rgba(255,255,255,0);}</style></head><body><div id="chart" /></body></html>
 /// 'data:text/html;base64,' + base64Encode(const Utf8Encoder().convert( /* STRING ABOVE */ ))
-const htmlBase64 =
-    'PCFET0NUWVBFIGh0bWw+CjxodG1sPgoKPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCwgbWF4aW11bS1zY2FsZT0xLjAsIG1pbmltdW0tc2NhbGU9MS4wLCB1c2VyLXNjYWxhYmxlPTAsIHRhcmdldC1kZW5zaXR5ZHBpPWRldmljZS1kcGkiIC8+CiAgICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgogICAgICAgIGJvZHksCiAgICAgICAgaHRtbCwKICAgICAgICAjY2hhcnQgewogICAgICAgICAgICBoZWlnaHQ6IDEwMCU7CiAgICAgICAgICAgIHdpZHRoOiAxMDAlOwogICAgICAgICAgICBtYXJnaW46IDBweDsKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgZGl2IHsKICAgICAgICAgICAgLXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApOwogICAgICAgIH0KICAgIDwvc3R5bGU+CjwvaGVhZD4KCjxib2R5PgogICAgPGRpdiBpZD0iY2hhcnQiPjwvZGl2Pgo8L2JvZHk+Cgo8L2h0bWw+';
+// const htmlBase64 = 'PCFET0NUWVBFIGh0bWw+CjxodG1sPgoKPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCwgbWF4aW11bS1zY2FsZT0xLjAsIG1pbmltdW0tc2NhbGU9MS4wLCB1c2VyLXNjYWxhYmxlPTAsIHRhcmdldC1kZW5zaXR5ZHBpPWRldmljZS1kcGkiIC8+CiAgICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgogICAgICAgIGJvZHksCiAgICAgICAgaHRtbCwKICAgICAgICAjY2hhcnQgewogICAgICAgICAgICBoZWlnaHQ6IDEwMCU7CiAgICAgICAgICAgIHdpZHRoOiAxMDAlOwogICAgICAgICAgICBtYXJnaW46IDBweDsKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgZGl2IHsKICAgICAgICAgICAgLXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDApOwogICAgICAgIH0KICAgIDwvc3R5bGU+CjwvaGVhZD4KCjxib2R5PgogICAgPGRpdiBpZD0iY2hhcnQiPjwvZGl2Pgo8L2JvZHk+Cgo8L2h0bWw+';
+const htmlBase64 = 'PCFET0NUWVBFIGh0bWw+CjxodG1sPgoJPGhlYWQ+CgkJPG1ldGEgY2hhcnNldD0idXRmLTgiPgoJCTx0aXRsZT5NeSBmaXJzdCB0aHJlZS5qcyBhcHA8L3RpdGxlPgoJCTxzdHlsZT4KCQkJYm9keSB7IG1hcmdpbjogMDsgfQoJCTwvc3R5bGU+Cgk8L2hlYWQ+Cgk8Ym9keT4KCgk8L2JvZHk+CjwvaHRtbD4=';
 
-class ThreeJs extends StatefulWidget {
-  const ThreeJs({
+class ThreeJsWidget extends StatefulWidget {
+  const ThreeJsWidget({
     Key? key,
-    required this.option,
+    this.option,
     this.extraScript = '',
     this.onMessage,
     this.extensions = const [],
@@ -26,7 +30,7 @@ class ThreeJs extends StatefulWidget {
     this.getControllerReference,
   }) : super(key: key);
 
-  final String option;
+  final String? option;
 
   final String extraScript;
 
@@ -53,10 +57,10 @@ class ThreeJs extends StatefulWidget {
   final Function(WebViewXController)? getControllerReference;
 
   @override
-  _ThreeJsState createState() => _ThreeJsState();
+  _ThreeJSWidgetState createState() => _ThreeJSWidgetState();
 }
 
-class _ThreeJsState extends State<ThreeJs> {
+class _ThreeJSWidgetState extends State<ThreeJsWidget> {
   WebViewXController? _controller;
 
   String? _currentOption;
@@ -65,7 +69,7 @@ class _ThreeJsState extends State<ThreeJs> {
   void initState() {
     super.initState();
     _currentOption = widget.option;
-    widget.getSetStateJS?.call(update);
+    // widget.getSetStateJS?.call(update);
     if (widget.reloadAfterInit) {
       Future.delayed(const Duration(milliseconds: 100), () {
         _controller?.reload();
@@ -73,50 +77,7 @@ class _ThreeJsState extends State<ThreeJs> {
     }
   }
 
-  void init() async {
-    threeJsScript.toString();
-    final extensionsStr = widget.extensions.isNotEmpty
-        ? widget.extensions.reduce((value, element) => '$value\n$element')
-        : '';
-    final themeStr = widget.theme != null ? '\'${widget.theme}\'' : 'null';
-    await _controller?.evalRawJavascript('''
-      $threeJsScript
-      $extensionsStr
-      var chart = THREE.init(document.getElementById('chart'), $themeStr);
-      ${widget.extraScript}
-      chart.setOption($_currentOption, true);
-    ''');
-    if (widget.onLoad != null) {
-      widget.onLoad!(_controller!);
-    }
-  }
-
-  // Set<Factory<OneSequenceGestureRecognizer>> getGestureRecognizers() {
-  //   Set<Factory<OneSequenceGestureRecognizer>> set = {};
-  //   if (widget.captureAllGestures || widget.captureHorizontalGestures) {
-  //     set.add(Factory<HorizontalDragGestureRecognizer>(() {
-  //       return HorizontalDragGestureRecognizer()
-  //         ..onStart = (DragStartDetails details) {}
-  //         ..onUpdate = (DragUpdateDetails details) {}
-  //         ..onDown = (DragDownDetails details) {}
-  //         ..onCancel = () {}
-  //         ..onEnd = (DragEndDetails details) {};
-  //     }));
-  //   }
-  //   if (widget.captureAllGestures || widget.captureVerticalGestures) {
-  //     set.add(Factory<VerticalDragGestureRecognizer>(() {
-  //       return VerticalDragGestureRecognizer()
-  //         ..onStart = (DragStartDetails details) {}
-  //         ..onUpdate = (DragUpdateDetails details) {}
-  //         ..onDown = (DragDownDetails details) {}
-  //         ..onCancel = () {}
-  //         ..onEnd = (DragEndDetails details) {};
-  //     }));
-  //   }
-  //   return set;
-  // }
-
-  void update(String preOption) async {
+  /*void update(String preOption) async {
     _currentOption = widget.option;
     if (_currentOption != preOption) {
       await _controller?.evalRawJavascript('''
@@ -126,13 +87,13 @@ class _ThreeJsState extends State<ThreeJs> {
         }
       ''');
     }
-  }
+  }*/
 
-  @override
-  void didUpdateWidget(ThreeJs oldWidget) {
+  /*@override
+  void didUpdateWidget(ThreeJsWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    update(oldWidget.option);
-  }
+    // update(oldWidget.option);
+  }*/
 
   @override
   void dispose() {
@@ -158,11 +119,11 @@ class _ThreeJsState extends State<ThreeJs> {
       javascriptMode: JavascriptMode.unrestricted,
       jsContent: <EmbeddedJsContent>{
         EmbeddedJsContent(js: '''
-      $threeJsScript
+      $echartsScript
       $extensionsStr
-      var chart = THREE.init(document.getElementById('chart'), $themeStr);
+      // var chart = echarts.init(document.getElementById('chart'), $themeStr);
       ${widget.extraScript}
-      chart.setOption($_currentOption, true);
+      // chart.setOption($_currentOption, true);
       ''')
       },
       onWebViewCreated: (WebViewXController webViewController) {

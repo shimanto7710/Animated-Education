@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      home: MyHomePage(),
+      home: ThreeJsScreen(),
     );
   }
 }
