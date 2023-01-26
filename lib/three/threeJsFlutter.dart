@@ -70,6 +70,7 @@ class _ThreeJSWidgetState extends State<ThreeJsWidget> {
     super.initState();
     _currentOption = widget.option;
     // widget.getSetStateJS?.call(update);
+    // widget.getSetStateJS?.call(update);
     if (widget.reloadAfterInit) {
       Future.delayed(const Duration(milliseconds: 100), () {
         _controller?.reload();
@@ -77,23 +78,24 @@ class _ThreeJSWidgetState extends State<ThreeJsWidget> {
     }
   }
 
-  /*void update(String preOption) async {
-    _currentOption = widget.option;
-    if (_currentOption != preOption) {
+  void update(String preOption) async {
+    // _currentOption = widget.option;
+    if (widget.extraScript != preOption) {
       await _controller?.evalRawJavascript('''
         try {
-          chart.setOption($_currentOption, true);
+        $_currentOption
+          // chart.setOption($_currentOption, true);
         } catch(e) {
         }
       ''');
     }
-  }*/
+  }
 
-  /*@override
+  @override
   void didUpdateWidget(ThreeJsWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     // update(oldWidget.option);
-  }*/
+  }
 
   @override
   void dispose() {

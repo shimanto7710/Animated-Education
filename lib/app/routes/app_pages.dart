@@ -1,3 +1,4 @@
+import 'package:animated_education/app/modules/splash_screen.dart';
 import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
@@ -8,7 +9,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.INITIAL;
 
   static final routes = [
     GetPage(
@@ -17,8 +18,8 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
     ),
   ];
 }
