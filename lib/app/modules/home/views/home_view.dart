@@ -7,6 +7,7 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +86,77 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
               ),
+              Container(child: Row(children: [
+                MaterialButton(
+                  height: 60,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.zero,
+                  hoverColor: const Color(0xff0044cc),
+                  // splashColor: SGColors.whiteShade1,
+                  highlightElevation: 0,
+                  color: const Color(0xff0044cc).withOpacity(0.4),
+                  onPressed: () {
+                    controller.changeColor("0x00ff00");
+                  },
+                  child: const Text(
+                    'Red',
+                    style: TextStyle(
+                      color:
+                      //Color(0xff0044cc)
+                      Colors.white,
+                    ),
+                  ),
+                ),
+                MaterialButton(
+                  height: 60,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.zero,
+                  hoverColor: const Color(0xff0044cc),
+                  // splashColor: SGColors.whiteShade1,
+                  highlightElevation: 0,
+                  color: const Color(0xff0044cc).withOpacity(0.4),
+                  onPressed: () {
+                    controller.changeColor("0x00ff00");
+                  },
+                  child: const Text(
+                    'Green',
+                    style: TextStyle(
+                      color:
+                      //Color(0xff0044cc)
+                      Colors.white,
+                    ),
+                  ),
+                ),
+                MaterialButton(
+                  height: 60,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.zero,
+                  hoverColor: const Color(0xff0044cc),
+                  // splashColor: SGColors.whiteShade1,
+                  highlightElevation: 0,
+                  color: const Color(0xff0044cc).withOpacity(0.4),
+                  onPressed: () {
+                    controller.changeColor("0x00ff00");
+                  },
+                  child: const Text(
+                    'Blue',
+                    style: TextStyle(
+                      color:
+                      //Color(0xff0044cc)
+                      Colors.white,
+                    ),
+                  ),
+                ),
+              ]),)
             ],
           ),
         ),
