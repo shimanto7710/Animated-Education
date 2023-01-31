@@ -59,8 +59,13 @@ class HomeView extends GetView<HomeController> {
               
                       renderer.render( scene, camera );
                     };
-              
+                          
+                          function changeColor(colorCode) {
+                            cube.material.color.setHex( 0xffffff );
+                          };
+                    changeColor();
                     animate();
+                    changeColor( 0xffffff );
                   ''',
                   onMessage: (String message) {},
                 ),
