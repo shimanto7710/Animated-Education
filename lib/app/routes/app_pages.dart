@@ -1,8 +1,8 @@
 import 'package:animated_education/app/modules/splash_screen.dart';
 import 'package:get/get.dart';
 
-import '../modules/home/bindings/detail_binding.dart';
-import '../modules/home/views/detail_view.dart';
+import '../modules/detail/bindings/detail_binding.dart';
+import '../modules/detail/views/detail_view.dart';
 
 part 'app_routes.dart';
 
