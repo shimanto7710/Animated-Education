@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class HomeController extends GetxController {
+class DetailController extends GetxController {
   //TODO: Implement HomeController
 
   RxDouble graphWidth = 300.0.obs;

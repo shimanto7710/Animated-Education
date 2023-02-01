@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../three/threeJsFlutter.dart';
-import '../controllers/home_controller.dart';
+import '../controllers/detail_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+class DetailView extends GetView<DetailController> {
+  const DetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
