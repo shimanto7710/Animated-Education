@@ -25,8 +25,8 @@ class HomeView extends GetView<HomeController> {
                 child: Text('Reactive updating and tap event',
                     style: TextStyle(fontSize: 20)),
               ),
-              const Text('- data will be fetched in a few seconds'),
-              const Text('- tap the bar and trigger the snack'),
+              // const Text('- data will be fetched in a few seconds'),
+              // const Text('- tap the bar and trigger the snack'),
               SizedBox(
                 key: UniqueKey(),
                 width: controller.graphWidth.value,
@@ -60,108 +60,105 @@ class HomeView extends GetView<HomeController> {
                       renderer.render( scene, camera );
                     };
                           
-                          function changeColor(colorCode) {
-                            cube.material.color.setHex( 0xffffff );
+                    function changeColor(colorCode) {
+                            cube.material.color.setHex( colorCode );
                           };
-                    changeColor();
+                     
                     animate();
-                    changeColor( 0xffffff );
+                    // changeColor( 0xffffff );
                   ''',
                   onMessage: (String message) {},
                 ),
               ),
-              MaterialButton(
-                height: 60,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: EdgeInsets.zero,
-                hoverColor: const Color(0xff0044cc),
-                // splashColor: SGColors.whiteShade1,
-                highlightElevation: 0,
-                color: const Color(0xff0044cc).withOpacity(0.4),
-                onPressed: controller.stopPressed,
-                child: const Text(
-                  'Toggle/\nButton',
-                  style: TextStyle(
-                    color:
-                    //Color(0xff0044cc)
-                    Colors.white,
-                  ),
-                ),
-              ),
-              Container(child: Row(children: [
-                MaterialButton(
-                  height: 60,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.zero,
-                  hoverColor: const Color(0xff0044cc),
-                  // splashColor: SGColors.whiteShade1,
-                  highlightElevation: 0,
-                  color: const Color(0xff0044cc).withOpacity(0.4),
-                  onPressed: () {
-                    controller.changeColor("0x00ff00");
-                  },
-                  child: const Text(
-                    'Red',
-                    style: TextStyle(
-                      color:
-                      //Color(0xff0044cc)
-                      Colors.white,
+              Container(
+                margin: const EdgeInsets.only(top: 50),
+                child: Row(children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: MaterialButton(
+                        height: 60,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.zero,
+                        hoverColor: const Color(0xff0044cc),
+                        // splashColor: SGColors.whiteShade1,
+                        highlightElevation: 0,
+                        color: const Color(0xff0044cc).withOpacity(0.4),
+                        onPressed: () {
+                          controller.changeColor("0xFF0000");
+                        },
+                        child: const Text(
+                          'Red',
+                          style: TextStyle(
+                            color:
+                                //Color(0xff0044cc)
+                                Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                MaterialButton(
-                  height: 60,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.zero,
-                  hoverColor: const Color(0xff0044cc),
-                  // splashColor: SGColors.whiteShade1,
-                  highlightElevation: 0,
-                  color: const Color(0xff0044cc).withOpacity(0.4),
-                  onPressed: () {
-                    controller.changeColor("0x00ff00");
-                  },
-                  child: const Text(
-                    'Green',
-                    style: TextStyle(
-                      color:
-                      //Color(0xff0044cc)
-                      Colors.white,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: MaterialButton(
+                        height: 60,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.zero,
+                        hoverColor: const Color(0xff0044cc),
+                        // splashColor: SGColors.whiteShade1,
+                        highlightElevation: 0,
+                        color: const Color(0xff0044cc).withOpacity(0.4),
+                        onPressed: () {
+                          controller.changeColor("0x00ff00");
+                        },
+                        child: const Text(
+                          'Green',
+                          style: TextStyle(
+                            color:
+                                //Color(0xff0044cc)
+                                Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                MaterialButton(
-                  height: 60,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: EdgeInsets.zero,
-                  hoverColor: const Color(0xff0044cc),
-                  // splashColor: SGColors.whiteShade1,
-                  highlightElevation: 0,
-                  color: const Color(0xff0044cc).withOpacity(0.4),
-                  onPressed: () {
-                    controller.changeColor("0x00ff00");
-                  },
-                  child: const Text(
-                    'Blue',
-                    style: TextStyle(
-                      color:
-                      //Color(0xff0044cc)
-                      Colors.white,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: MaterialButton(
+                        height: 60,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.zero,
+                        hoverColor: const Color(0xff0044cc),
+                        // splashColor: SGColors.whiteShade1,
+                        highlightElevation: 0,
+                        color: const Color(0xff0044cc).withOpacity(0.4),
+                        onPressed: () {
+                          controller.changeColor("0x0000FF");
+                        },
+                        child: const Text(
+                          'Blue',
+                          style: TextStyle(
+                            color:
+                                //Color(0xff0044cc)
+                                Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ]),)
+                ]),
+              )
             ],
           ),
         ),

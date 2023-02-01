@@ -50,11 +50,7 @@ class HomeController extends GetxController {
   Future<void> changeColor(String colorCode) async {
     // webController?.evalRawJavascript(buttonCodeController.text.trim());
     webController?.evalRawJavascript('''
-                    // alert("Hello! I am an alert box!!");
-                    // material = new THREE.MeshBasicMaterial( { color: $colorCode } );
-                    // camera.position.z = 100;
-              
-                    // animate();
+                    changeColor( $colorCode );
                   ''');
     // setStateJS?.call('');
   }
