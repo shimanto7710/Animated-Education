@@ -12,7 +12,7 @@ class DetailView extends GetView<DetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('DetailView'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
