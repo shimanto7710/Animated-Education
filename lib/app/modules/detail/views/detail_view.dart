@@ -36,8 +36,9 @@ class DetailView extends GetView<DetailController> {
                   getSetStateJS: controller.getSetStateJS,
                   // getSetStateJS: getSetStateJs,
                   extraScript: '''
+                    ${Get.arguments}
                     // alert("Hello! I am an alert box!!");
-                    const scene = new THREE.Scene();
+                    /*const scene = new THREE.Scene();
                     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
               
                     const renderer = new THREE.WebGLRenderer();
@@ -64,7 +65,7 @@ class DetailView extends GetView<DetailController> {
                             cube.material.color.setHex( colorCode );
                           };
                      
-                    animate();
+                    animate();*/
                     // changeColor( 0xffffff );
                   ''',
                   onMessage: (String message) {},

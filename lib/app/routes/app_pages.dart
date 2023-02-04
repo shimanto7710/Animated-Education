@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 
+import 'package:animated_education/app/modules/home/bindings/home_binding.dart';
+import 'package:animated_education/app/modules/home/views/home_view.dart';
+
 import '../modules/detail/bindings/detail_binding.dart';
 import '../modules/detail/views/detail_view.dart';
 import '../modules/home/bindings/home_binding.dart';
