@@ -30,7 +30,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     animationList.add(ThreeModel(id: 1, title: "aaaaaaaaa", script: Scripts.CUBE_SCRIPT, changeColorScript: Scripts.CUBE_SCRIPT_BUTTON_CHANGE));
-    animationList.add(ThreeModel(id: 1, title: "bbbbbbb", script: Scripts.CUBE_SCRIPT, changeColorScript: Scripts.CUBE_SCRIPT_BUTTON_CHANGE));
+    animationList.add(ThreeModel(id: 1, title: "bbbbbbb", script: Scripts.CIRCLE_SCRIPT, changeColorScript: Scripts.CUBE_SCRIPT_BUTTON_CHANGE));
     animationList.add(ThreeModel(id: 1, title: "ccccccccc", script: Scripts.CUBE_SCRIPT, changeColorScript: Scripts.CUBE_SCRIPT_BUTTON_CHANGE));
     super.onInit();
   }
